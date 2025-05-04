@@ -8,6 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const corsOptions = {
+    origin: ['http://localhost:5173', 'https://your-frontend-domain'], // Добавьте URL деплоя фронтенда позже
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 const dbConfig = {
     
